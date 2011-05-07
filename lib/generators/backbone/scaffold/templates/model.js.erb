@@ -52,15 +52,15 @@ App.Models.<%= model_class.name %> = Backbone.Model.extend({
   <%- end -%>
 
   modelName: function() {
-    return I18n.t('<%= "#{@model_class.i18n_scope}.models.#{@model_class.model_name.i18n_key}" %>');
+    return $.i18n._('<%= "#{@model_class.i18n_scope}.models.#{@model_class.model_name.i18n_key}" %>');
   },
 
   attributeName: function(attribute) {
-    return I18n.t('<%= "#{@model_class.i18n_scope}.attributes.#{@model_class.model_name.i18n_key}" %>.' + attribute);
+    return $.i18n._('<%= "#{@model_class.i18n_scope}.attributes.#{@model_class.model_name.i18n_key}" %>.' + attribute);
   },
 
   attributeValueName: function(attribute, value) {
-    return I18n.t('<%= "#{@model_class.i18n_scope}.attribute_values.#{@model_class.model_name.i18n_key}" %>.' + attribute + '.' + value);
+    return $.i18n._('<%= "#{@model_class.i18n_scope}.attribute_values.#{@model_class.model_name.i18n_key}" %>.' + attribute + '.' + value);
   }
 
 });

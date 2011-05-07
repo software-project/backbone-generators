@@ -4,9 +4,6 @@ App.Views.<%= namespace %> || (App.Views.<%= namespace %> = {})
 // A `Backbone.View` for displaying a <%= name %> and all its activities.
 App.Views.<%= namespace %>.Show = Backbone.View.extend({
 
-  // The Handlebars.js template used during rendering.
-  template: Handlebars.compile($('#<%= show_template_name %>').html()),
-
   // The model passed into the view can be any `App.Models.<%= name %>`.
   // Any changes to the model will cause this view to re-render.
   initialize: function() {
@@ -17,7 +14,7 @@ App.Views.<%= namespace %>.Show = Backbone.View.extend({
 
   // Renders the view based on the `#<%= show_template_name %>` Handlebars.js template.
   render: function() {
-    var output = this.template(this.model);
+    $(this.el).html(JST["<%= namespace %>.show.jst"]);
     $(this.el).html(output);
   }
 });
