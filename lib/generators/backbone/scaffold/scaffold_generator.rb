@@ -5,29 +5,29 @@ module Backbone
       argument :name, :type => :string
 
       def create_templates
-        template 'index.hbs.erb', "app/templates/#{pluralized}/index.hbs"
-        template 'item.hbs.erb', "app/templates/#{pluralized}/item.hbs"
-        template 'show.hbs.erb', "app/templates/#{pluralized}/show.hbs"
+        template 'index.hbs.erb', "app/views/#{pluralized}/_index.jst.haml"
+        template 'item.hbs.erb', "app/views/#{pluralized}/_edit.jst.haml"
+        template 'show.hbs.erb', "app/views/#{pluralized}/_show.jst.haml"
       end
 
       def create_styles
-        template 'index.scss.erb', "app/stylesheets/#{pluralized}/index.scss"
-        template 'item.scss.erb', "app/stylesheets/#{pluralized}/item.scss"
-        template 'show.scss.erb', "app/stylesheets/#{pluralized}/show.scss"
+#        template 'index.scss.erb', "app/stylesheets/#{pluralized}/index.scss"
+#        template 'item.scss.erb', "app/stylesheets/#{pluralized}/item.scss"
+#        template 'show.scss.erb', "app/stylesheets/#{pluralized}/show.scss"
       end
 
       def create_views
-        template 'index.js.erb', "public/javascripts/app/views/#{pluralized}/index.js"
-        template 'item.js.erb', "public/javascripts/app/views/#{pluralized}/item.js"
-        template 'show.js.erb', "public/javascripts/app/views/#{pluralized}/show.js"
+        template 'index.js.erb', "public/javascripts/views/#{pluralized}/index.js"
+        template 'item.js.erb', "public/javascripts/views/#{pluralized}/edit.js"
+        template 'show.js.erb', "public/javascripts/views/#{pluralized}/show.js"
       end
 
       def create_model
-        template 'model.js.erb', "public/javascripts/app/models/#{name.underscore.gsub('_', '-')}.js"
+        template 'model.js.erb', "public/javascripts/models/#{name.underscore.gsub('_', '-')}.js"
       end
 
       def create_controller
-        template 'controller.js.erb', "public/javascripts/app/controllers/#{pluralized}-controller.js"
+        template 'controller.js.erb', "public/javascripts/controllers/#{pluralized}.js"
       end
 
     private

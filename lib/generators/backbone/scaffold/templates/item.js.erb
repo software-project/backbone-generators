@@ -1,7 +1,7 @@
 // A `Backbone.View` for displaying a <%= name %> for inline editing
 // in a collection view. Internally, this view uses a generic Form View
 // for binding form fields to the model.
-App.Views.<%= namespace %>.Item = Backbone.View.extend({
+App.Views.<%= namespace %>.Edit = Backbone.View.extend({
 
   // The Handlebars.js template used during rendering.
   template: Handlebars.compile($('#<%= item_template_name %>').html()),  
