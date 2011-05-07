@@ -42,7 +42,6 @@ App.Models.<%= model_class.name %> = Backbone.Model.extend({
     return this.constructor.attributeValueName('<%= c.name %>', this.<%= c.name.camelize(:lower) %>());
   },
 <%- end -%>
-}, {
   <%- unless validators.empty? -%>
 
   validators: [
