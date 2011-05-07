@@ -4,7 +4,9 @@ require "backbone-generators/version"
 
 Gem::Specification.new do |s|
   s.name        = "backbone-generators"
-  s.version     = Backbone::Generators::VERSION
+  s.version     = "0.0.1"
+  s.date        = %q{2011-05-06}
+
   s.platform    = Gem::Platform::RUBY
   s.authors     = ["Greger Olsson"]
   s.email       = ["greger.olsson@redstone.se"]
