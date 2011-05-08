@@ -4,6 +4,11 @@ App.Views.<%= namespace %> || (App.Views.<%= namespace %> = {})
 // A `Backbone.View` for displaying a <%= name %> and all its activities.
 App.Views.<%= namespace %>.Show = Backbone.View.extend({
 
+  // DOM event bindings. (Remove if not used)
+  events: {
+    // 'click .some-class': 'someAction'
+  },
+
   // The model passed into the view can be any `App.Models.<%= name %>`.
   // Any changes to the model will cause this view to re-render.
   initialize: function() {

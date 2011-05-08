@@ -5,6 +5,11 @@ App.Views.<%= namespace %> || (App.Views.<%= namespace %> = {})
 // for binding form fields to the model.
 App.Views.<%= namespace %>.Edit = Backbone.View.extend({
 
+  // DOM event bindings. (Remove if not used)
+  events: {
+    // 'click .some-class': 'someAction'
+  },
+
   // The model passed into the view must be an `App.Models.<%= name %>`.
   // The element to attach this view to is likely supplied by one
   // of the generic collection views when the user has selected to
