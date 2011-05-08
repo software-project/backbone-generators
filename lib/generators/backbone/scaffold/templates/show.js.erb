@@ -14,7 +14,7 @@ App.Views.<%= namespace %>.Show = Backbone.View.extend({
 
   // Renders the view based on the `#<%= show_template_name %>` Handlebars.js template.
   render: function() {
-    $(this.el).html(JST["<%= namespace %>.show.jst"]);
+    $(this.el).html(JST["<%= namespace.lowercase %>.show.jst"]);
     $(this.el).html(output);
   }
 });

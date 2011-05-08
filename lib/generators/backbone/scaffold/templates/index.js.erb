@@ -19,7 +19,7 @@ App.Views.<%= namespace %>.Index = Backbone.View.extend({
 
   // Renders the view based on the `#<%= index_template_name %>` Handlebars.js template.
   render: function() {
-    $(this.el).html(JST["<%= namespace %>.index.jst"]);
+    $(this.el).html(JST["<%= namespace.lowercase %>.index.jst"]);
 
     // Setup the nested tree view. It will use the same model as this view, which
     // is the <%= name %> collection. We pass in a reference to the view that it should
