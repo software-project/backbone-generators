@@ -1,4 +1,4 @@
-App.Models.<%= model_class.name %> = Backbone.Model.extend({
+<%= model_class.name %> = Backbone.Model.extend({
 <%- unless associations.empty? -%>
 
   initialize: function() {
@@ -66,6 +66,6 @@ App.Models.<%= model_class.name %> = Backbone.Model.extend({
 });
 
 App.Collections.<%= model_class.name %> = Backbone.Collection.extend({
-    model: App.Models.<%= model_class.name %>,
+    model: <%= model_class.name %>,
     url: '/<%= model_class.name.downcase.pluralize %>'
 });

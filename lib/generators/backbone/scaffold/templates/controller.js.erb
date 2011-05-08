@@ -40,7 +40,7 @@ App.Controllers.<%= namespace %> = Backbone.Controller.extend({
         <%= namespace.downcase %>.fetch({
             accepts: "application/json",
             success: function() {
-                new App.Views.<%= namespace %>.Index({ collection: <%= namespace %> });
+                new App.Views.<%= namespace %>.Index({ collection: <%= namespace.downcase %> });
             },
             error: function() {
                 new Error({ message: "Error loading <%= namespace.downcase %>." });
