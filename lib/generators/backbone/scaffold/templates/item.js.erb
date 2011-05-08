@@ -16,9 +16,6 @@ App.Views.<%= namespace %>.Edit = Backbone.View.extend({
   // Renders the custom item template and hooks up a Form View to its form
   // to handle form posting and other things.
   render: function() {
-    $(this.el).html(JST["<%= namespace.downcase %>.edit.jst"]);
-    // TODO: Create an App.Views.Input.Form to do the actual form handling
-    // and hook it up to the form element in `output`.
-    $(this.el).html(output);
+    $(this.el).html(JST.<%= namespace.downcase %>_edit_jst({ model: this.model }));
   }
 });
