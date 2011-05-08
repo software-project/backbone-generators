@@ -3,10 +3,10 @@
 // add any routes not introduced by `App.Controllers.Restful`, if any.
 App.Controllers.<%= namespace %> = Backbone.Controller.extend({
     routes: {
-        "<%= namespace %>/new":             "new<%= name %>",
-        "<%= namespace %>/:id/edit":        "edit",
-        "<%= namespace %>/:id":             "show",
-        "<%= namespace %>":                 "index"
+        "<%= namespace.downcase %>/new":             "new<%= name %>",
+        "<%= namespace.downcase %>/:id/edit":        "edit",
+        "<%= namespace.downcase %>/:id":             "show",
+        "<%= namespace.downcase %>":                 "index"
     },
 
     edit: function(id) {
