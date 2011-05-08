@@ -65,6 +65,7 @@ App.Models.<%= model_class.name %> = Backbone.Model.extend({
 
 });
 
-App.Collections.<%= model_class.name %> = Backbone.Collection.extend(
-  _.extend({model: App.Models.<%= model_class.name %>}, App.Mixins.Collection)
-);
+App.Collections.<%= model_class.name %> = Backbone.Collection.extend({
+    model: App.Models.<%= model_class.name %>,
+    url: '/<%= model_class.name.downcase.pluralize %>'
+});

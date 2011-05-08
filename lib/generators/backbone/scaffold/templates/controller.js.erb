@@ -2,11 +2,60 @@
 // The controller is extended with RESTful routes so we only need to
 // add any routes not introduced by `App.Controllers.Restful`, if any.
 App.Controllers.<%= namespace %> = Backbone.Controller.extend({
+    routes: {
+        "<%= namespace %>/new":             "new<%= name %>",
+        "<%= namespace %>/:id/edit":        "edit",
+        "<%= namespace %>/:id":             "show",
+        "<%= namespace %>":                 "index"
+    },
+
+    edit: function(id) {
+        var <%= name.downcase %> = new <%= name %>({ id: id });
+        tab.fetch({
+            success: function(model, resp) {
+                new App.Views.<%= namespace %>.Edit({ model: <%= name.downcase %> });
+            },
+            error: function() {
+                new Error({ message: 'Could not find that <%= name.downcase %>.' });
+                window.location.hash = '#';
+            }
+        });
+    },
+
+    show: function(id) {
+        var <%= name.downcase %> = new <%= name %>({ id: id });
+        <%= name.downcase %>.fetch({
+            success: function(model, resp) {
+                new App.Views.<%= namespace %>.Show({ model: <%= name.downcase %> });
+            },
+            error: function() {
+                new Error({ message: 'Could not find that <%= name.downcase %>.' });
+                window.location.hash = '#';
+            }
+        });
+    },
+
+    index: function() {
+        var <%= namespace.downcase %> = new App.Collections.<%= namespace %>();
+        <%= namespace.downcase %>.fetch({
+            accepts: "application/json",
+            success: function() {
+                new App.Views.<%= namespace %>.Index({ collection: <%= namespace %> });
+            },
+            error: function() {
+                new Error({ message: "Error loading <%= namespace.downcase %>." });
+            }
+        });
+    },
+
+    new<%= name %>: function() {
+        new App.Views.<%= namespace %>.Edit({ model: new <%= name %>() });
+    }
 
 });
 
 // Extend with support for RESTful routes
-_.extend(App.Controllers.<%= namespace %>, App.Controllers.Restful);
+//_.extend(App.Controllers.<%= namespace %>, App.Controllers.Restful);
 
 // We instantiate it immediately so it will be active when the App starts
 new App.Controllers.<%= namespace %>({
