@@ -22,5 +22,6 @@ App.Views.<%= namespace %>.Edit = Backbone.View.extend({
   // to handle form posting and other things.
   render: function() {
     $(this.el).html(JST.<%= namespace.downcase %>_edit_jst({ model: this.model }));
+    enableValidator();
   }
 });

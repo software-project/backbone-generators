@@ -20,5 +20,6 @@ App.Views.<%= namespace %>.Show = Backbone.View.extend({
   // Renders the view based on the `#<%= show_template_name %>` Handlebars.js template.
   render: function() {
     $(this.el).html(JST.<%= namespace.downcase %>_show_jst({ model: this.model }));
+    enableValidator();
   }
 });

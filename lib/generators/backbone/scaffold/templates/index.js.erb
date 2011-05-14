@@ -21,5 +21,6 @@ App.Views.<%= namespace %>.Index = Backbone.View.extend({
   render: function() {
     $(this.el).html(JST.<%= namespace.downcase %>_index_jst({collection: this.collection}));
     $('#app').html(this.el);
+    enableValidator();
   }
 });
