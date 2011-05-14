@@ -1,4 +1,9 @@
 <%= model_class.name %> = Backbone.Model.extend({
+    url : function() {
+      var base = '<%= model_class.name.pluralize %>';
+      if (this.isNew()) return base;
+      return '<%= model_class.name.pluralize %>' + (base.charAt(base.length - 1) == '/' ? '' : '/') + this.id;
+    },
 <%- unless associations.empty? -%>
 
   initialize: function() {
