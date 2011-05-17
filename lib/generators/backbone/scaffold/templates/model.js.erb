@@ -72,5 +72,10 @@
 
 App.Collections.<%= model_class.name.pluralize %> = Backbone.Collection.extend({
     model: <%= model_class.name %>,
-    url: '/<%= model_class.name.downcase.pluralize %>'
+
+    url: '/<%= model_class.name.downcase.pluralize %>',,
+
+    parse: function(response) {
+        return response.<%= model_class.name.downcase.pluralize %>;
+    }
 });
