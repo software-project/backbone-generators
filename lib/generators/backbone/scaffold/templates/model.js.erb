@@ -1,4 +1,4 @@
-<%= model_class.name %> = Backbone.Model.extend({
+<%= model_class.name %> = Backbone.Atlas.Model.extend({
     url : function() {
       var base = '<%= model_class.name.pluralize %>';
       if (this.isNew()) return base;
