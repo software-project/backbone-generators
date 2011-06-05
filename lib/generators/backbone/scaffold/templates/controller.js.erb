@@ -36,7 +36,7 @@ App.Controllers.<%= namespace %> = Backbone.Controller.extend({
     },
 
     index: function() {
-        var <%= namespace.downcase %> = new App.Collections.<%= namespace %>();
+        var <%= namespace.downcase %> = new <%= namespace + "List" %>();
         <%= namespace.downcase %>.fetch({
             accepts: "application/json",
             success: function() {
