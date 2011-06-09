@@ -4,61 +4,15 @@
       if (this.isNew()) return base;
       return '<%= model_class.name.pluralize %>' + (base.charAt(base.length - 1) == '/' ? '' : '/') + this.id;
     },
+
+    modelName: function(){
+      return '<%= model_class.name.downcase %>';
+    },
 <%- unless associations.empty? -%>
-
-  initialize: function() {
-  <%- for a in associations -%>
-    this._<%= a.name %> = new App.Collections.<%= a.class_name %>(this.get('<%= a.name %>'));
-    this._<%= a.name %>.url = '<%= association_path(@model_class, a) %>';
-    this.unset('<%= a.name %>', {silent: true});
-  <%- end -%>
+  initialize: function(attributes) {
+      this.has(attributes);
   },
 <%- end -%>
-<%- unless model_class.validators.empty? -%>
-
-  validate: function(attributes) {
-    var self = this;
-    var errors = _.reduce(App.Models.<%= model_class.name %>.validators, function(errors, validator) {
-      validator.validate(self, attributes, errors);
-      return errors;
-    }, {});
-    return _.isEmpty(errors) ? undefined : errors;
-  },
-<%- end -%>
-<%- unless associations.empty? # Create accessors for all collections -%>
-
-  <%- for a in associations -%>
-  <%= a.name %>: function() {
-    return this._<%= a.name %>;
-  },
-  <%- end -%>
-<%- end -%>
-<%- for c in model_class.accessible_attributes.empty? ? model_class.column_names : model_class.accessible_attributes -%>
-  <%- unless c == 'id' or c.end_with? '_id' -%>
-
-  <%= c.camelize(:lower) %>: function() {
-    return this.get('<%= c %>');
-  },
-  <%- end -%>
-<%- end -%>
-<%- for c in integer_columns # Create name helpers for integer values -%>
-
-  <%= c.name.camelize(:lower) %>Name: function() {
-    return this.constructor.attributeValueName('<%= c.name %>', this.<%= c.name.camelize(:lower) %>());
-  },
-<%- end -%>
-  <%- unless validators.empty? -%>
-
-  validators: [
-    <%- for v in validators -%>
-    new Validation.<%= v.kind.capitalize %>('<%= v.attributes[0] %>'),
-    <%- end -%>
-  ],
-  <%- end -%>
-
-  modelName: function() {
-    return $.i18n._('<%= "#{@model_class.i18n_scope}.models.#{@model_class.model_name.i18n_key}" %>');
-  },
 
   attributeName: function(attribute) {
     return $.i18n._('<%= "#{@model_class.i18n_scope}.attributes.#{@model_class.model_name.i18n_key}" %>.' + attribute);
