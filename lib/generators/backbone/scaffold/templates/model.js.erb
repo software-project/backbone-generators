@@ -8,11 +8,9 @@
     modelName: function(){
       return '<%= model_class.name.downcase %>';
     },
-<%- unless associations.empty? -%>
   initialize: function(attributes) {
       this.has(attributes);
   },
-<%- end -%>
 
   attributeName: function(attribute) {
     return $.i18n._('<%= "#{@model_class.i18n_scope}.attributes.#{@model_class.model_name.i18n_key}" %>.' + attribute);
